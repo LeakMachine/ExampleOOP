@@ -6,19 +6,19 @@ class Time {
 private:
 	int hou, min, sec;
 public:
-	// âñå íåîáõîäèìûå êîíñòðóêòîðû
+	// Ð²ÑÐµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ñ‹
 	Time();
 	Time(int _hou, int _min, int _sec);
 	Time(const Time &t);
-	Time(std::string str_time); // ïðåîáðàçîâàíèå âðåìåíè èç ñòðîêè
+	Time(std::string str_time); // Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ Ð¸Ð· ÑÑ‚Ñ€Ð¾ÐºÐ¸
 	~Time();
 
 	
 
-	std::string timeToString(std::string _string); // ìåòîä ïðåäñòàâëåíèÿ âðåìåíè êàê ñòðîêè
+	std::string timeToString(std::string _string); // Ð¼ÐµÑ‚Ð¾Ð´ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ ÐºÐ°Ðº ÑÑ‚Ñ€Ð¾ÐºÐ¸
 
 
-	// ïåðåãðóçêè ïåðåãðóçî÷êè 
+	// Ð¿ÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ¸ Ð¿ÐµÑ€ÐµÐ³Ñ€ÑƒÐ·Ð¾Ñ‡ÐºÐ¸ 
 	
 	void operator=(const Time& t) {
 		this->hou = t.hou;
