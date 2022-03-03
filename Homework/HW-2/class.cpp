@@ -26,9 +26,10 @@ Hex::~Hex() {
 };
 
 std::ostream& operator<< (std::ostream& out, const Hex& h) {
-	std::ofstream ofile{ "output.txt" };
-	for (int i = 0; i < h.size; i++)
-		ofile << h.hex[i];
+	
+	for(int i = 0; i < h.size; i++)	
+		out << h.hex[i];
+
 	return out;
 };
 
@@ -55,14 +56,8 @@ bool Hex::operator==(const Hex& h) {
 	return true;
 };
 
-bool Hex::operator!=(const Hex& h) {
-	if (this->size != h.size)
-		return true;
-	for (int i = 0; i < h.size; i++) {
-		if (this->hex[i] != h.hex[i])
-			return true;
-	}
-	return false;
+bool operator!=(const Hex& h1, const Hex& h2) {
+	return !(&h1 == &h2);
 };
 
 Hex& Hex::operator=(const Hex& h) {
@@ -118,14 +113,13 @@ Hex Hex::operator-(const Hex& h) {
 	test << std::hex << n << std::endl;
 	std::string k;
 	test >> k;
-	std::cout << k << std::endl;
 
-	int len = string1.length();
+	int len = k.length();
 
 	Hex tempHex(len);
 
 	for (int i = 0; i < len; i++) {
-		char temp = string1[i];
+		char temp = k[i];
 		tempHex.hex[i] = (unsigned char)(temp);
 	}
 
@@ -146,14 +140,13 @@ Hex Hex::operator+(const Hex& h) {
 	test << std::hex << n << std::endl;
 	std::string k;
 	test >> k;
-	std::cout << k << std::endl;
 
-	int len = string1.length();
+	int len = k.length();
 
 	Hex tempHex(len);
 
 	for (int i = 0; i < len; i++) {
-		char temp = string1[i];
+		char temp = k[i];
 		tempHex.hex[i] = (unsigned char)(temp);
 	}
 

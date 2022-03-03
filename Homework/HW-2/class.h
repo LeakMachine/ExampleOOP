@@ -21,7 +21,7 @@ public:
 	friend std::ostream& operator<< (std::ostream& out, const Hex& h);
 	friend std::istream& operator>> (std::istream& in, Hex& h);
 	bool operator==(const Hex& h);
-	bool operator!=(const Hex& h);
+	friend bool operator!=(const Hex& h1, const Hex& h2);
 	Hex& operator=(const Hex& h);
 	unsigned char& operator[](int _index);
 

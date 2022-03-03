@@ -23,9 +23,9 @@ int main() {
 	time_5 = time_2;
 
 	cout << "add and substract" << endl;
-	time_2 + 26;
+	time_2 = time_2 + 26;
 	cout << time_2 << endl;
-	time_5 - 35;
+	time_5 = time_5 - 35;
 	cout << time_5 << endl;
 
 	cout << time_4 << endl;
