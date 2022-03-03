@@ -12,10 +12,10 @@ public:
 	//конструкторы
 	Hex();
 	Hex(int _size);
-	//~Hex(); ???????????????
+	Hex(const Hex& h);
+	~Hex();
 
 	//перегрузки операторов
-	friend Hex& operator+(const Hex& h1, const Hex& h2);
 	Hex operator+(const Hex& h);
 	Hex operator-(const Hex& h);
 	friend std::ostream& operator<< (std::ostream& out, const Hex& h);

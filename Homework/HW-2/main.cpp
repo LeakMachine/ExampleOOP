@@ -12,8 +12,7 @@ int main() {
 
 	hex3 = hex - hex2;
 	hex4 = hex + hex2;
-	
-	cout << hex4;
+
 
 	return 0;
 }

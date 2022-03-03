@@ -3,19 +3,27 @@
 Hex::Hex() {
 	size = 5;
 	hex = new unsigned char[size];
-}
+};
 
 Hex::Hex(int _size) {
 	size = _size;
 	hex = new unsigned char[size];
-}
+};
 
-//Hex::~Hex() {
-//	if (size) {
-//		delete[] hex;
-//	}
-//	size = 0;
-//};
+Hex::Hex(const Hex& h) {
+	size = h.size;
+	hex = new unsigned char[size];
+	for (int i = 0; i < size; i++) {
+		hex[i] = h.hex[i];
+	}
+};
+
+Hex::~Hex() {
+	if (this) {
+		delete[] hex;
+	}
+	size = 0;
+};
 
 std::ostream& operator<< (std::ostream& out, const Hex& h) {
 	std::ofstream ofile{ "output.txt" };
@@ -25,7 +33,15 @@ std::ostream& operator<< (std::ostream& out, const Hex& h) {
 };
 
 std::istream& operator>> (std::istream& in, Hex& h) {
-	in >> std::hex >> h.hex;
+	std::string temp;
+	in >> std::hex >> temp;
+
+	for (int i = 0; i < h.size; i++) {
+		char tempch = temp[i];
+		h.hex[i] = (unsigned char)(tempch);
+	}
+
+	
 	return in;
 };
 
@@ -50,6 +66,12 @@ bool Hex::operator!=(const Hex& h) {
 };
 
 Hex& Hex::operator=(const Hex& h) {
+
+	if (size != h.size) {
+		delete[] this->hex;
+		this->hex = new unsigned char[h.size];
+	}
+
 	for (int i = 0; i < size; i++) {
 		this->hex[i] = h.hex[i];
 	}
@@ -98,9 +120,11 @@ Hex Hex::operator-(const Hex& h) {
 	test >> k;
 	std::cout << k << std::endl;
 
-	Hex tempHex;
+	int len = string1.length();
 
-	for (int i = 0; i < h.size; i++) {
+	Hex tempHex(len);
+
+	for (int i = 0; i < len; i++) {
 		char temp = string1[i];
 		tempHex.hex[i] = (unsigned char)(temp);
 	}
@@ -124,9 +148,11 @@ Hex Hex::operator+(const Hex& h) {
 	test >> k;
 	std::cout << k << std::endl;
 
-	Hex tempHex;
+	int len = string1.length();
 
-	for (int i = 0; i < h.size; i++) {
+	Hex tempHex(len);
+
+	for (int i = 0; i < len; i++) {
 		char temp = string1[i];
 		tempHex.hex[i] = (unsigned char)(temp);
 	}
