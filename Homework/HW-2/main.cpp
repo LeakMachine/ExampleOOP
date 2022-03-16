@@ -16,12 +16,12 @@ int main() {
 	cout << hex3 << endl;
 	cout << hex4 << endl;
 
-	if (hex3 == hex4)
+	if (hex == hex2)
 		cout << "win" << endl;
 	else
 		cout << "fail" << endl;
 
-	if (hex3 != hex4)
+	if (hex != hex2)
 		cout << "win" << endl;
 	else
 		cout << "fail" << endl;
