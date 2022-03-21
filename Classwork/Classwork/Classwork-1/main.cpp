@@ -3,302 +3,110 @@
 #include "class.h"
 
 
-/* Çàäàíèå: äîïèñàòü ïðîïóùåííûå ìåòîäû, âûäåëèòü ôóíêöèè, êëàññû,
-çàìåíèòü ÷àñòü ôóíêöèé ïåðåãðóçêîé îïåðàòîðîâ.
-
-ÖÅËÜ: main() äîëæåí ñòàòü õîðîøî ÷èòàåìîé ñòðóêòðóòîé, ÷òîáû áûëî ïîíÿòíî, ÷òî ïðîèñõîäèò âî âñåé ïðîãðàììå (áåç êîììåíòàðèåâ),
-íî ïðè ýòîì ïîìåùàëñÿ áû íà îäíîì ýêðàíå.
-
-! Â main() âíîñèòü ñâîè èçìåíåíèÿ ñòðóêòóðû ïðîãðàììû çàïðåùåíî. Òîëüêî çàìåíÿòü äåéñòâèÿ íà àíàëîãè, ðåàëèçîâàííûå â
-ôóíêöèÿõ èëè ñ èñïîëüçîâàíèåì êëàññîâ. ÑÒÐÓÊÒÓÐÀ ÄÎËÆÍÀ ÎÑÒÀÒÜÑß ÈÑÕÎÄÍÎÉ.
-
-Íà ãèòõàáå äîëæíî ïîÿâèòüñÿ 4 êîììèòà:
-0. äîïèñàë ìåòîäû
-1. âûäåëèë ôóíêöèè
-2. âûäåëèë êëàññû è ïðèìåíèë ïðèíöèïû ÎÎÏ
-3. çàìåíèë ÷àñòü ôóíêöèé îïåðàòîðàìè
-
-Òî åñòü ïî îêîí÷àíèè êàæäîãî ýòàïà äåëàéòå êîììèò.
-
-Ïîäñêàçêè:
-0. Âîçìîæíûå êëàññû, êîòîðûå ïðîãëÿäûûâàþòñÿ â ïðîãðàììå:
-- êëàññ ÌÅÍÞ (îáúåäèíÿåò ôóíêöèè, îòíîñÿùèåñÿ ê ìåíþ âçàèìîäåéñòâèÿ ñ ïîëüçîâàòåëåì),
-- êëàññ ÒÎ×ÊÀ (äëÿ õðàíåíèÿ êîîðäèíàò)
-- êëàññ ÒÐÅÓÃÎËÜÍÈÊ (â êîíñòðóêòîðàõ äîëæíû îòîáðàæàòüñÿ âñå ñïîñîáû çàäàíèÿ òðåóãîëüíèêà).
-
-1. Ôóíêöèè:
-- ðàçëè÷íûå ôóíêöèè ìåíþ (ïîêàçàòü ìåíþ 1 óðîâíÿ, ïîêàçàòü ìåíþ 2 óðîâíÿ è ò.ä.),
-- ôóíêöèè ââîäà è ïðîâåðêè êîððåêòíîñòè äàííûõ,
-- ôóíêöèè ðàçëè÷íûõ äåéñòâèé íàä òðåóãîëüíèêîì: ïðîâåðêà íà ñóùåñòâîâàíèå, ïîäñ÷¸ò ïëîùàäè è ò.ä.
-
-Óêàçàíèå. Íà ýòàïå ñîçäàíèÿ êëàññîâ ïðåäïîëàãàåòñÿ, ÷òî îáúåêò êëàññà ñîçäà¸òñÿ íå â äàííîé ôóíêöèè, à ïîñëå íå¸.
-Íå ëåïèòå ââîä äàííûõ è êîíñòðóêòîð â îäèí ìåòîä. Ôóíêöèè ââîäà äàííûõ - ôóíêöèè ÌÅÍÞ, à ñîçäàíèå îáúåêòà (òî÷êè, íàïðèìåð) -
-ôóíêöèè ñîîòâåòñòâóþùåãî êëàññà.
-
-Ïðèìåð äîïóñòèìîé ðåàëèçàöèè:
-×åðåç 3 ìåòîäà:
-1) ìåòîä ââîäà çíà÷åíèé (ìåòîä êëàññà ìåíþ) - inputSides
-2) ìåòîä ââîäà òðåóãëüíèêà (ìåòîä êëàññà òðåóãîëüíèê) -inputTriangle
-
-Äàëåå èñïîëüçóåòñÿ ïåðå÷èñëåíèå - enum Type {bySides, byBaseAndHeight, byPointsCoords};
-
+/* Ð—Ð°Ð´Ð°Ð½Ð¸Ðµ: Ð´Ð¾Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð¿ÑƒÑ‰ÐµÐ½Ð½Ñ‹Ðµ Ð¼ÐµÑ‚Ð¾Ð´Ñ‹, Ð²Ñ‹Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸, ÐºÐ»Ð°ÑÑÑ‹,
+Ð·Ð°Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ‡Ð°ÑÑ‚ÑŒ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¹ Ð¿ÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ¾Ð¹ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ð¾Ð².
+Ð¦Ð•Ð›Ð¬: main() Ð´Ð¾Ð»Ð¶ÐµÐ½ ÑÑ‚Ð°Ñ‚ÑŒ Ñ…Ð¾Ñ€Ð¾ÑˆÐ¾ Ñ‡Ð¸Ñ‚Ð°ÐµÐ¼Ð¾Ð¹ ÑÑ‚Ñ€ÑƒÐºÑ‚Ñ€ÑƒÑ‚Ð¾Ð¹, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð±Ñ‹Ð»Ð¾ Ð¿Ð¾Ð½ÑÑ‚Ð½Ð¾, Ñ‡Ñ‚Ð¾ Ð¿Ñ€Ð¾Ð¸ÑÑ…Ð¾Ð´Ð¸Ñ‚ Ð²Ð¾ Ð²ÑÐµÐ¹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ðµ (Ð±ÐµÐ· ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ²),
+Ð½Ð¾ Ð¿Ñ€Ð¸ ÑÑ‚Ð¾Ð¼ Ð¿Ð¾Ð¼ÐµÑ‰Ð°Ð»ÑÑ Ð±Ñ‹ Ð½Ð° Ð¾Ð´Ð½Ð¾Ð¼ ÑÐºÑ€Ð°Ð½Ðµ.
+! Ð’ main() Ð²Ð½Ð¾ÑÐ¸Ñ‚ÑŒ ÑÐ²Ð¾Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹ Ð·Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð¾. Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð·Ð°Ð¼ÐµÐ½ÑÑ‚ÑŒ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ð½Ð° Ð°Ð½Ð°Ð»Ð¾Ð³Ð¸, Ñ€ÐµÐ°Ð»Ð¸Ð·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð²
+Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÑ… Ð¸Ð»Ð¸ Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼ ÐºÐ»Ð°ÑÑÐ¾Ð². Ð¡Ð¢Ð Ð£ÐšÐ¢Ð£Ð Ð Ð”ÐžÐ›Ð–ÐÐ ÐžÐ¡Ð¢ÐÐ¢Ð¬Ð¡Ð¯ Ð˜Ð¡Ð¥ÐžÐ”ÐÐžÐ™.
+ÐÐ° Ð³Ð¸Ñ‚Ñ…Ð°Ð±Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð¿Ð¾ÑÐ²Ð¸Ñ‚ÑŒÑÑ 4 ÐºÐ¾Ð¼Ð¼Ð¸Ñ‚Ð°:
+0. Ð´Ð¾Ð¿Ð¸ÑÐ°Ð» Ð¼ÐµÑ‚Ð¾Ð´Ñ‹
+1. Ð²Ñ‹Ð´ÐµÐ»Ð¸Ð» Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸
+2. Ð²Ñ‹Ð´ÐµÐ»Ð¸Ð» ÐºÐ»Ð°ÑÑÑ‹ Ð¸ Ð¿Ñ€Ð¸Ð¼ÐµÐ½Ð¸Ð» Ð¿Ñ€Ð¸Ð½Ñ†Ð¸Ð¿Ñ‹ ÐžÐžÐŸ
+3. Ð·Ð°Ð¼ÐµÐ½Ð¸Ð» Ñ‡Ð°ÑÑ‚ÑŒ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¹ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ð°Ð¼Ð¸
+Ð¢Ð¾ ÐµÑÑ‚ÑŒ Ð¿Ð¾ Ð¾ÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ð¸ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ ÑÑ‚Ð°Ð¿Ð° Ð´ÐµÐ»Ð°Ð¹Ñ‚Ðµ ÐºÐ¾Ð¼Ð¼Ð¸Ñ‚.
+ÐŸÐ¾Ð´ÑÐºÐ°Ð·ÐºÐ¸:
+0. Ð’Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ñ‹Ðµ ÐºÐ»Ð°ÑÑÑ‹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¿Ñ€Ð¾Ð³Ð»ÑÐ´Ñ‹Ñ‹Ð²Ð°ÑŽÑ‚ÑÑ Ð² Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ðµ:
+- ÐºÐ»Ð°ÑÑ ÐœÐ•ÐÐ® (Ð¾Ð±ÑŠÐµÐ´Ð¸Ð½ÑÐµÑ‚ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸, Ð¾Ñ‚Ð½Ð¾ÑÑÑ‰Ð¸ÐµÑÑ Ðº Ð¼ÐµÐ½ÑŽ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¼),
+- ÐºÐ»Ð°ÑÑ Ð¢ÐžÐ§ÐšÐ (Ð´Ð»Ñ Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚)
+- ÐºÐ»Ð°ÑÑ Ð¢Ð Ð•Ð£Ð“ÐžÐ›Ð¬ÐÐ˜Ðš (Ð² ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð°Ñ… Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚ÑŒÑÑ Ð²ÑÐµ ÑÐ¿Ð¾ÑÐ¾Ð±Ñ‹ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ°).
+1. Ð¤ÑƒÐ½ÐºÑ†Ð¸Ð¸:
+- Ñ€Ð°Ð·Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð¼ÐµÐ½ÑŽ (Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¼ÐµÐ½ÑŽ 1 ÑƒÑ€Ð¾Ð²Ð½Ñ, Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¼ÐµÐ½ÑŽ 2 ÑƒÑ€Ð¾Ð²Ð½Ñ Ð¸ Ñ‚.Ð´.),
+- Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð²Ð²Ð¾Ð´Ð° Ð¸ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾ÑÑ‚Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ñ…,
+- Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ñ€Ð°Ð·Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¹ Ð½Ð°Ð´ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð¼: Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½Ð° ÑÑƒÑ‰ÐµÑÑ‚Ð²Ð¾Ð²Ð°Ð½Ð¸Ðµ, Ð¿Ð¾Ð´ÑÑ‡Ñ‘Ñ‚ Ð¿Ð»Ð¾Ñ‰Ð°Ð´Ð¸ Ð¸ Ñ‚.Ð´.
+Ð£ÐºÐ°Ð·Ð°Ð½Ð¸Ðµ. ÐÐ° ÑÑ‚Ð°Ð¿Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÐºÐ»Ð°ÑÑÐ¾Ð² Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ð»Ð°Ð³Ð°ÐµÑ‚ÑÑ, Ñ‡Ñ‚Ð¾ Ð¾Ð±ÑŠÐµÐºÑ‚ ÐºÐ»Ð°ÑÑÐ° ÑÐ¾Ð·Ð´Ð°Ñ‘Ñ‚ÑÑ Ð½Ðµ Ð² Ð´Ð°Ð½Ð½Ð¾Ð¹ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸, Ð° Ð¿Ð¾ÑÐ»Ðµ Ð½ÐµÑ‘.
+ÐÐµ Ð»ÐµÐ¿Ð¸Ñ‚Ðµ Ð²Ð²Ð¾Ð´ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¸ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð² Ð¾Ð´Ð¸Ð½ Ð¼ÐµÑ‚Ð¾Ð´. Ð¤ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð²Ð²Ð¾Ð´Ð° Ð´Ð°Ð½Ð½Ñ‹Ñ… - Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ ÐœÐ•ÐÐ®, Ð° ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¾Ð±ÑŠÐµÐºÑ‚Ð° (Ñ‚Ð¾Ñ‡ÐºÐ¸, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€) -
+Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÐºÐ»Ð°ÑÑÐ°.
+ÐŸÑ€Ð¸Ð¼ÐµÑ€ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð¾Ð¹ Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸:
+Ð§ÐµÑ€ÐµÐ· 3 Ð¼ÐµÑ‚Ð¾Ð´Ð°:
+1) Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ð²Ð¾Ð´Ð° Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ (Ð¼ÐµÑ‚Ð¾Ð´ ÐºÐ»Ð°ÑÑÐ° Ð¼ÐµÐ½ÑŽ) - inputSides
+2) Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ð²Ð¾Ð´Ð° Ñ‚Ñ€ÐµÑƒÐ³Ð»ÑŒÐ½Ð¸ÐºÐ° (Ð¼ÐµÑ‚Ð¾Ð´ ÐºÐ»Ð°ÑÑÐ° Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº) -inputTriangle
+Ð”Ð°Ð»ÐµÐµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð¿ÐµÑ€ÐµÑ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ðµ - enum Type {bySides, byBaseAndHeight, byPointsCoords};
 Triange tr1;
 tr1.inputTriangle(bySides);
-
 void inputTriangle(Type _type) {
   switch (_type) {
    case bySides:
      int side1, side2, side3;
-     inputSides(&side1, &side2, &side3);   // òóò ñèäèò ââîä çíà÷åíèé
-     Triange temp(side1, side2, side3);    // òóò ñîçäà¸òñÿ òðåóãîëüíèê ñ óêàçàííûìè ïîëÿìè
+     inputSides(&side1, &side2, &side3);   // Ñ‚ÑƒÑ‚ ÑÐ¸Ð´Ð¸Ñ‚ Ð²Ð²Ð¾Ð´ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹
+     Triange temp(side1, side2, side3);    // Ñ‚ÑƒÑ‚ ÑÐ¾Ð·Ð´Ð°Ñ‘Ñ‚ÑÑ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð¿Ð¾Ð»ÑÐ¼Ð¸
      this = temp;
      break;
    // ...
   }
 }
-
-èëè
-
+Ð¸Ð»Ð¸
 void inputTriangle(Type _type) {
   switch (_type) {
    case bySides:
      int side1, side2, side3;
-     inputSides(&side1, &side2, &side3);   // òóò ñèäèò ââîä çíà÷åíèé
-     this->side1 = side1;                  // òóò èçìåíÿåòñÿ óæå ñóùåñòâóþùèé òðåóãîëüíèê, çàïîëíåíèå óêàçàííûìè ïîëÿìè
+     inputSides(&side1, &side2, &side3);   // Ñ‚ÑƒÑ‚ ÑÐ¸Ð´Ð¸Ñ‚ Ð²Ð²Ð¾Ð´ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹
+     this->side1 = side1;                  // Ñ‚ÑƒÑ‚ Ð¸Ð·Ð¼ÐµÐ½ÑÐµÑ‚ÑÑ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº, Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð¿Ð¾Ð»ÑÐ¼Ð¸
      this->side2 = side2;
      this->side3 = side3;
      break;
    // ...
   }
 }
-
 */
 
 
-void userPick1(int* chosen) {
-    std::cout << "Ways to define a triangle:" << std::endl
-        << "1) by three sides," << std::endl
-        << "2) by base and height," << std::endl
-        << "3) by three points" << std::endl
-        << "Input: ";
-    std::cin >> (*chosen);
-};
-
-void userPick2(int* chosen) {
-    std::cout << "Methods: 1) get square," << std::endl
-        << "2) get perimeter, " << std::endl
-        << "3) get type of triangle," << std::endl
-        << "4) compare with another triangle by square," << std::endl
-        << "5) back to first menu," << std::endl
-        << "0) exit," << std::endl
-        << "Input: ";
-    std::cin >> (*chosen);
-};
-
-void inputBaseH(int* base, int* height) {
-    int AB = (*base), h = (*height);
-    std::cout << "Input base of triangle: ";
-    std::cin >> AB;
-    std::cout << "Input height of triangle: ";
-    std::cin >> h;
-    (*base) = AB; (*height) = h;
-};
-
-void inputSides(int* side1, int* side2, int* side3) {
-    int AB = (*side1), AC = (*side2), BC = (*side3);
-    while (1) {
-        std::cout << "Input 3 side of triangle (between space): ";
-        std::cin >> AB >> AC >> BC;
-        if (!(AB + BC > AC && AB + AC > BC && AC + BC > AB)) {
-            std::cout << "Input error: triangle dont exist" << std::endl;
-            std::cout << "Try again" << std::endl;
-            continue;
-        }
-        (*side1) = AB; (*side2) = AC; (*side3) = BC;
-        break;
-    }
-};
-
-void inputCoordinates(int coord1[], int coord2[], int coord3[]) {
-    std::cout << "Input 1st point's coordinates (between space): ";
-    std::cin >> coord1[0] >> coord1[1];
-    std::cout << "Input 2nd point's coordinates (between space): ";
-    std::cin >> coord2[0] >> coord2[1];
-    std::cout << "Input 3rd point's coordinates (between space): ";
-    std::cin >> coord3[0] >> coord3[1];
-};
-
-void calcSqSides(int side1, int side2, int side3) {
-    int AB = side1; int AC = side2; int BC = side3; float S; float p;
-    if (AB + BC > AC && AB + AC > BC && AC + BC > AB) {
-        p = (AB + BC + AC) * 0.5;
-        S = sqrt(p * (p - AB) * (p - BC) * (p - AC));
-        std::cout << "Square of triangle: S = " << S << std::endl;
-    }
-    else {
-        std::cout << "Input error: triangle dont exist" << std::endl;
-    }
-};
-
-void calcSqBaseH(int side1, int height) {
-    int AB = side1; int h = height; float S;
-    if (h != 0) {
-        S = 0.5 * AB * h;
-        std::cout << "Square of triangle: S = " << S << std::endl;
-    }
-    else {
-        std::cout << "Input error: triangle dont exist" << std::endl;
-    }
-};
-
-void calcSqPoints(int coord1[], int coord2[], int coord3[]) {
-    float S;
-    S = 0.5 * abs(((coord1[0] - coord3[0]) * (coord2[1] - coord3[1])) - ((coord2[0] - coord3[0]) * (coord1[1] - coord3[1])));
-    std::cout << "Square of triangle: S = " << S << std::endl;
-};
-
-void calcPrSides(int side1, int side2, int side3) {
-    int AB = side1; int AC = side2; int BC = side3; float p;
-    p = AB + BC + BC;
-    std::cout << "Perimeter: " << p << std::endl;
-}
-
-void calcPrBaseH() {
-    std::cout << "Input error: we couldn't find perimeter by your parameters" << std::endl;
-};
-
-void calcPrPoints(int coord1[], int coord2[], int coord3[]) {
-    float p;
-    int ABx = coord2[0] - coord1[0];
-    int ABy = coord2[1] - coord1[1];
-    int ACx = coord3[0] - coord1[0];
-    int ACy = coord3[1] - coord1[1];
-    int BCx = coord3[0] - coord2[0];
-    int BCy = coord3[1] - coord2[1];
-    p = sqrt(pow(ABx, 2) + pow(ABy, 2)) + sqrt(pow(ACx, 2) + pow(ACy, 2)) + sqrt(pow(BCx, 2) + pow(BCy, 2));
-    std::cout << "Perimeter: " << p << std::endl;
-};
-
-void triangleType(int side1, int side2, int side3) {
-    int AB = side1; int AC = side2; int BC = side3;
-    if (AB == AC == BC) {
-        std::cout << "Triangle is equilateral" << std::endl;
-    }
-    else if (AB == AC || AC == BC || AB == BC && !(AB == AC == BC)) {
-        std::cout << "Triangle is isosceles" << std::endl;
-    }
-    else if (pow(AB, 2) + pow(AC, 2) == pow(BC, 2) || pow(BC, 2) + pow(AC, 2) == pow(AB, 2) || pow(AB, 2) + pow(BC, 2) == pow(AC, 2)) {
-        std::cout << "Triangle is isosceles" << std::endl;
-    }
-    else {
-        std::cout << "Triangle is scalene" << std::endl;
-    }
-};
-
-void triangleCompare(float S1, float S2) {
-    if (S1 == S2)
-        std::cout << "Triangles have equal square" << std::endl;
-    else
-        std::cout << "Triangles' squares are not equal" << std::endl;
-};
-
-enum Type { bySides, byBaseAndHeight, byPointsCoords };
-
-void inputTriangle(Type _type) {
-    switch (_type) {
-    case bySides:
-        break;
-    case byBaseAndHeight:
-        break;
-    case byPointsCoords:
-        break;
-    }
-};
-
-void menuExitOrBack(int side1, int side2, int side3, int coord1[], int coord2[], int coord3[], int height, Type input) {
-    system("cls");
-    int AB = side1; int AC = side2; int BC = side3; int h = height;
-    std::cout << "Last parameters: ";
-    if (input == bySides) {
-        std::cout << AB << "x" << BC << "x" << AC << std::endl;
-    }
-    else if (input == byBaseAndHeight) {
-        std::cout << "a = " << AB << ", h = " << h << std::endl;
-    }
-    else if (input == byPointsCoords) {
-        std::cout << "(" << coord1[0] << ", " << coord1[1] << ")" << ", ";
-        std::cout << "(" << coord2[0] << ", " << coord2[1] << ")" << ", ";
-        std::cout << "(" << coord3[0] << ", " << coord3[1] << ")" << std::endl;
-    }
-};
-
-
 int main() {
-    int S1 = 0, S2 = 0;
     int user_choosen;
-    int AB, BC, AC;
-    int A[2], B[2], C[2];
-    int h = 0;
-    float p, S;
     bool exit_flag = false, back_flag;
-
+    Menu menu;
     Type _inputType;
 
     while (!exit_flag) {
         back_flag = false;
-        userPick1(&user_choosen);
+        menu.userPick1(&user_choosen);
         switch (user_choosen) {
         case 1:
             _inputType = bySides;
-            inputSides(&AB, &AC, &BC);
             break;
         case 2:
             _inputType = byBaseAndHeight;
-            inputBaseH(&AB, &h);
             break;
         case 3:
             _inputType = byPointsCoords;
-            inputCoordinates(A, B, C);
             break;
         default:
             std::cout << "Input error: error in input" << std::endl;
         }
 
+        Triangle triangle, triangle2;
+        triangle.inputTriangle(_inputType);
+
         while (!back_flag) {
-            userPick2(&user_choosen);
+            menu.userPick2(&user_choosen);
             switch (user_choosen) {
             case 0:
                 exit_flag = true;
                 break;
             case 1:
-                if (_inputType == bySides) {
-                    calcSqSides(AB, AC, BC);
-                }
-                else if (_inputType == byBaseAndHeight) {
-                    calcSqBaseH(AB, h);
-                }
-                else if (_inputType == byPointsCoords) {
-                    calcSqPoints(A, B, C);
-                }
-                system("pause");
-                system("cls");
+                triangle.calcTriangleSq(_inputType);
                 break;
             case 2:
-                if (_inputType == bySides) {
-                    calcPrSides(AB, AC, BC);
-                }
-                else if (_inputType == byBaseAndHeight) {
-                    calcPrBaseH();
-                }
-                else if (_inputType == byPointsCoords) {
-                    calcPrPoints(A, B, C);
-                }
+                triangle.calcTrianglePr(_inputType);
                 break;
             case 3:
-                triangleType(AB, AC, BC);
+                triangle.triangleType();
                 break;
             case 4:
-                triangleCompare(S1, S2);
+                if (triangle == triangle2)
+                    std::cout << "epic" << std::endl;
+                else
+                    std::cout << "unepic" << std::endl;
                 break;
             case 5:
                 back_flag = true;
@@ -308,7 +116,7 @@ int main() {
             }
 
             if (back_flag || exit_flag) {
-                menuExitOrBack(AB, AC, BC, A, B, C, h, _inputType);
+                triangle.menuExitOrBack(_inputType);
             }
             break;
         }
