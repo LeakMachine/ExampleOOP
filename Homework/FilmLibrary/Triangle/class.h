@@ -2,35 +2,44 @@
 #include <string>
 
 class filmReleaseDate {
+private:
 	int day;
 	int month;
 	int year;
 public:
-	filmReleaseDate();
-	filmReleaseDate(int _day, int _month, int _year);
-
 	friend class filmLibrary;
 };
 
 class filmCreators {
+private:
 	std::string producer;
 	std::string screenwriter;
 	std::string composer;
 public:
-	filmCreators();
-	filmCreators(std::string _producer, std::string _screenwriter, std::string _composer);
-
 	friend class filmLibrary;
 };
 
 class filmLibrary {
+public:
 	std::string name;
 	filmCreators creators;
 	filmReleaseDate releaseDate;
 	int profit;
+
 public:
 	filmLibrary();
 	filmLibrary(std::string _name, filmCreators _creators, filmReleaseDate _releaseDate, int _profit);
+
+	int getDay();
+	int getMonth();
+	int getYear();
+	std::string getProducer();
+	std::string getScreenwriter();
+	std::string getComposer();
+	std::string getName();
+	int getProfit();
+
+	double helpMe();
 
 	void setDay(int _day);
 	void setMonth(int _month);

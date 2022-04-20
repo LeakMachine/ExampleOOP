@@ -1,19 +1,5 @@
 #include "class.h"
 
-filmReleaseDate::filmReleaseDate()
-{
-	day = 1;
-	month = 1;
-	year = 1900;
-}
-
-filmReleaseDate::filmReleaseDate(int _day, int _month, int _year)
-{
-	day = _day;
-	month = _month;
-	year = _year;
-}
-
 void filmLibrary::setDay(int _day)
 {
 	releaseDate.day = _day;
@@ -29,36 +15,84 @@ void filmLibrary::setYear(int _year)
 	releaseDate.year = _year;
 }
 
-filmCreators::filmCreators()
-{
-	producer = "Placeholder";
-	screenwriter = "Placeholder";
-	composer = "Placeholder";
-}
-
-filmCreators::filmCreators(std::string _producer, std::string _screenwriter, std::string _composer)
-{
-	producer = _producer;
-	screenwriter = _screenwriter;
-	composer = _composer;
-}
-
 void filmLibrary::setProducer(std::string _producer)
 {
+	creators.producer = _producer;
 }
 
 void filmLibrary::setScreenwriter(std::string _screenwriter)
 {
+	creators.screenwriter = _screenwriter;
 }
 
 void filmLibrary::setComposer(std::string _composer)
 {
+	creators.composer = _composer;
+}
+
+
+void filmLibrary::setName(std::string _name)
+{
+	name = _name;
+}
+
+void filmLibrary::setProfit(int _profit)
+{
+	profit = _profit;
+}
+
+int filmLibrary::getDay()
+{
+	return releaseDate.day;
+}
+
+int filmLibrary::getMonth()
+{
+	return releaseDate.month;
+}
+
+int filmLibrary::getYear()
+{
+	return releaseDate.year;
+}
+
+std::string filmLibrary::getProducer()
+{
+	return creators.producer;
+}
+
+std::string filmLibrary::getScreenwriter()
+{
+	return creators.screenwriter;
+}
+
+std::string filmLibrary::getComposer()
+{
+	return creators.composer;
+}
+
+std::string filmLibrary::getName()
+{
+	return name;
+}
+
+int filmLibrary::getProfit()
+{
+	return profit;
+}
+
+double filmLibrary::helpMe()
+{
+	return 0.0;
 }
 
 filmLibrary::filmLibrary()
 {
 	name = "Placeholder";
 	profit = 0;
+	releaseDate.day = 1;
+	releaseDate.month = 1;
+	releaseDate.year = 1900;
 }
 
 filmLibrary::filmLibrary(std::string _name, filmCreators _creators, filmReleaseDate _releaseDate, int _profit)
@@ -73,15 +107,6 @@ filmLibrary::filmLibrary(std::string _name, filmCreators _creators, filmReleaseD
 	releaseDate.day = _releaseDate.day;
 	releaseDate.month = _releaseDate.month;
 	releaseDate.year = _releaseDate.year;
-}
-
-void filmLibrary::setName(std::string _name)
-{
-}
-
-void filmLibrary::setProfit(int _profit)
-{
-	profit = _profit;
 }
 
 std::string filmLibrary::filmStr()
