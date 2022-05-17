@@ -2,6 +2,8 @@
 
 #include "class.h"
 
+#define FILM_LIMIT 10
+
 namespace CppCLRWinformsProjekt {
 
 
@@ -13,7 +15,9 @@ namespace CppCLRWinformsProjekt {
 	using namespace System::Drawing;
 	using namespace System::Runtime::InteropServices;
 
-	filmLibrary films[10];
+	filmLibrary films[FILM_LIMIT];
+	std::string placeholderStr = "Placeholder Placeholder Placeholder Placeholder 1 1 1900 0";
+
 
 	void MarshalString(String^ s, std::string& outputstring)
 	{
@@ -74,6 +78,8 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::CheckedListBox^ checkedListBox1;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::ListBox^ listBox2;
 
 	protected:
 
@@ -131,6 +137,8 @@ namespace CppCLRWinformsProjekt {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->checkedListBox1 = (gcnew System::Windows::Forms::CheckedListBox());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->listBox2 = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -231,19 +239,19 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(13, 366);
+			this->button4->Location = System::Drawing::Point(173, 377);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(158, 23);
+			this->button4->Size = System::Drawing::Size(125, 23);
 			this->button4->TabIndex = 14;
-			this->button4->Text = L"button4";
+			this->button4->Text = L"НАЙТИ";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
 			// 
 			// textBox9
 			// 
-			this->textBox9->Location = System::Drawing::Point(13, 338);
+			this->textBox9->Location = System::Drawing::Point(9, 338);
 			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(158, 22);
+			this->textBox9->Size = System::Drawing::Size(290, 22);
 			this->textBox9->TabIndex = 15;
 			// 
 			// label2
@@ -330,21 +338,49 @@ namespace CppCLRWinformsProjekt {
 			// checkedListBox1
 			// 
 			this->checkedListBox1->FormattingEnabled = true;
-			this->checkedListBox1->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
-				L"Найти по названию", L"Найти по году", L"Все фильмы заданного режиссёра",
+			this->checkedListBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				L"По названию и году", L"Все фильмы заданного режиссёра",
 					L"Число фильмов с наибольшими сборами", L"Число фильмов с наибольшими сборами в выбранном году", L"Текущее число фильмов"
 			});
-			this->checkedListBox1->Location = System::Drawing::Point(192, 338);
+			this->checkedListBox1->Location = System::Drawing::Point(306, 338);
 			this->checkedListBox1->Name = L"checkedListBox1";
-			this->checkedListBox1->Size = System::Drawing::Size(423, 106);
+			this->checkedListBox1->Size = System::Drawing::Size(423, 123);
 			this->checkedListBox1->TabIndex = 27;
 			this->checkedListBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::checkedListBox1_SelectedIndexChanged);
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(173, 406);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(126, 23);
+			this->button5->TabIndex = 28;
+			this->button5->Text = L"Отмена";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &Form1::button5_Click);
+			// 
+			// listBox2
+			// 
+			this->listBox2->FormattingEnabled = true;
+			this->listBox2->ItemHeight = 16;
+			this->listBox2->Items->AddRange(gcnew cli::array< System::Object^  >(43) {
+				L"2022", L"2021", L"2020", L"2019", L"2018", L"2017",
+					L"2016", L"2015", L"2014", L"2013", L"2012", L"2011", L"2010", L"2009", L"2008", L"2007", L"2006", L"2005", L"2004", L"2003",
+					L"2002", L"2001", L"2000", L"1999", L"1998", L"1997", L"1996", L"1995", L"1994", L"1993", L"1992", L"1991", L"1990", L"1989",
+					L"1988", L"1987", L"1986", L"1985", L"1984", L"1983", L"1982", L"1981", L"1980"
+			});
+			this->listBox2->Location = System::Drawing::Point(9, 377);
+			this->listBox2->Name = L"listBox2";
+			this->listBox2->Size = System::Drawing::Size(159, 84);
+			this->listBox2->TabIndex = 29;
+			this->listBox2->Visible = false;
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(950, 477);
+			this->ClientSize = System::Drawing::Size(753, 477);
+			this->Controls->Add(this->listBox2);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->checkedListBox1);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label7);
@@ -384,7 +420,7 @@ namespace CppCLRWinformsProjekt {
 		private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 		}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (i == 10)
+		if (i == FILM_LIMIT)
 		{
 			return;
 		}
@@ -394,81 +430,190 @@ namespace CppCLRWinformsProjekt {
 			MarshalString(nameStrTemp, nameTemp);
 
 			std::string producerTemp;
-			String^ producerStrTemp = textBox7->Text;
+			String^ producerStrTemp = textBox6->Text;
 			MarshalString(producerStrTemp, producerTemp);
 
 			std::string screenwriterTemp;
-			String^ screenwriterStrTemp = textBox8->Text;
+			String^ screenwriterStrTemp = textBox7->Text;
 			MarshalString(screenwriterStrTemp, screenwriterTemp);
 
 			std::string composerTemp;
-			String^ composerStrTemp = textBox6->Text;
+			String^ composerStrTemp = textBox8->Text;
 			MarshalString(composerStrTemp, composerTemp);
 
-			films[i].setDay(int::Parse(textBox1->Text));
-			films[i].setMonth(int::Parse(textBox2->Text));
-			films[i].setYear(int::Parse(textBox3->Text));
-			films[i].setProfit(int::Parse(textBox4->Text));
-			films[i].setName(nameTemp);
-			films[i].setProducer(producerTemp);
-			films[i].setScreenwriter(screenwriterTemp);
-			films[i].setComposer(composerTemp);
+			int dayTemp = int::Parse(textBox1->Text);
+			int monthTemp = int::Parse(textBox2->Text);
+			int yearTemp = int::Parse(textBox3->Text);
+			int profitTemp = int::Parse(textBox4->Text);
 
+			films[i].filmSetData(nameTemp, producerTemp, screenwriterTemp, composerTemp, dayTemp, monthTemp, yearTemp, profitTemp);
 			listBox1->Items->Add(gcnew System::String(films[i].filmStr().c_str()));
-
-			std::string ass = std::to_string(i);
-			label1->Text = gcnew System::String(ass.c_str());
+			
+			i++;
 		}
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		std::string ass = std::to_string(i);
-		label1->Text = gcnew System::String(ass.c_str());
+		films[i].filmSetData("Placeholder", "Placeholder", "Placeholder", "Placeholder", 1, 1, 1900, 0);
 		listBox1->Items->Remove(listBox1->SelectedItem);
 	}
 private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	i = listBox1->SelectedIndex;
 	std::string ass = std::to_string(i);
-	label1->Text = gcnew System::String(ass.c_str());
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (listBox1->SelectedIndex == -1) {
+		return;
+	}
 
 	std::string nameTemp;
 	String^ nameStrTemp = textBox5->Text;
 	MarshalString(nameStrTemp, nameTemp);
 
 	std::string producerTemp;
-	String^ producerStrTemp = textBox7->Text;
+	String^ producerStrTemp = textBox6->Text;
 	MarshalString(producerStrTemp, producerTemp);
 
 	std::string screenwriterTemp;
-	String^ screenwriterStrTemp = textBox8->Text;
+	String^ screenwriterStrTemp = textBox7->Text;
 	MarshalString(screenwriterStrTemp, screenwriterTemp);
 
 	std::string composerTemp;
-	String^ composerStrTemp = textBox6->Text;
+	String^ composerStrTemp = textBox8->Text;
 	MarshalString(composerStrTemp, composerTemp);
 
-	films[i].setDay(int::Parse(textBox1->Text));
-	films[i].setMonth(int::Parse(textBox2->Text));
-	films[i].setYear(int::Parse(textBox3->Text));
-	films[i].setProfit(int::Parse(textBox4->Text));
-	films[i].setName(nameTemp);
-	films[i].setProducer(producerTemp);
-	films[i].setScreenwriter(screenwriterTemp);
-	films[i].setComposer(composerTemp);
+	int dayTemp = int::Parse(textBox1->Text);
+	int monthTemp = int::Parse(textBox2->Text);
+	int yearTemp = int::Parse(textBox3->Text);
+	int profitTemp = int::Parse(textBox4->Text);
+
+	films[i].filmSetData(nameTemp, producerTemp, screenwriterTemp, composerTemp, dayTemp, monthTemp, yearTemp, profitTemp);
 
 	listBox1->Items->Insert(listBox1->SelectedIndex, gcnew System::String(films[i].filmStr().c_str()));
 	listBox1->Items->RemoveAt(listBox1->SelectedIndex);
 }
 
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	std::string producerTemp;
-	String^ producerStrTemp = textBox9->Text;
-	MarshalString(producerStrTemp, producerTemp);
+	std::string inputTemp;
+	String^ inputStrTemp = textBox9->Text;
+	MarshalString(inputStrTemp, inputTemp);
+	String^ yearStrTemp = (String^)listBox2->SelectedItem;
 	listBox1->Items->Clear();
+
+			int count = 0;
+
+		for (int i = 0; i < FILM_LIMIT; i++) {
+			if (films[i].filmStr() != placeholderStr) {
+				count++;
+			}
+		}
+
+	if (checkedListBox1->SelectedIndex == 1) {
+		for (int i = 0; i < FILM_LIMIT; i++) {
+			if (films[i].getProducer() == inputTemp) {
+				listBox1->Items->Add(gcnew System::String(films[i].filmStr().c_str()));
+			}
+		}
+	}
+	else  if (checkedListBox1->SelectedIndex == 0){
+		for (int i = 0; i < FILM_LIMIT; i++) {
+			if (films[i].getName() == inputTemp && films[i].getYear().ToString() == yearStrTemp) {
+				listBox1->Items->Add(gcnew System::String(films[i].filmStr().c_str()));
+			}
+		}
+	}
+	else  if (checkedListBox1->SelectedIndex == 3) {
+
+		filmLibrary temp;
+
+		for (int i = 0; i < FILM_LIMIT - 1; i++) {
+			for (int j = 0; j < FILM_LIMIT - i - 1; j++) {
+				if (films[j].getProfit() > films[j + 1].getProfit()) {
+					temp = films[j];
+					films[j] = films[j + 1];
+					films[j + 1] = temp;
+				}
+			}
+		}
+
+		for (int i = 0; i < FILM_LIMIT / 2; i++)
+		{
+			filmLibrary tmp = films[i];
+			films[i] = films[FILM_LIMIT - 1 - i];
+			films[FILM_LIMIT - 1 - i] = tmp;
+		}
+
+		int tempInt = int::Parse(inputStrTemp);
+
+		for (int i = 0; i < FILM_LIMIT; i++) {
+			if (films[i].getName() == inputTemp && films[i].getYear().ToString() == yearStrTemp && films[i].filmStr() != placeholderStr && tempInt != 0) {
+				listBox1->Items->Add(gcnew System::String(films[i].filmStr().c_str()));
+				tempInt--;
+			}
+		}
+	}
+
+	else  if (checkedListBox1->SelectedIndex == 2) {
+
+		filmLibrary temp;
+
+		for (int i = 0; i < FILM_LIMIT - 1; i++) {
+			for (int j = 0; j < FILM_LIMIT - i - 1; j++) {
+				if (films[j].getProfit() > films[j + 1].getProfit()) {
+					temp = films[j];
+					films[j] = films[j + 1];
+					films[j + 1] = temp;
+				}
+			}
+		}
+
+		for (int i = 0; i < FILM_LIMIT / 2; i++)
+		{
+			filmLibrary tmp = films[i];
+			films[i] = films[FILM_LIMIT - 1 - i];
+			films[FILM_LIMIT - 1 - i] = tmp;
+		}
+
+		int tempInt = int::Parse(inputStrTemp);
+
+		for (int i = 0; i < FILM_LIMIT; i++) {
+			if (films[i].filmStr() != placeholderStr && tempInt != 0) {
+				listBox1->Items->Add(gcnew System::String(films[i].filmStr().c_str()));
+				tempInt--;
+			}
+		}
+	}
 	
+	else  if (checkedListBox1->SelectedIndex == 4) {
+		int count = 0;
+
+		for (int i = 0; i < FILM_LIMIT; i++) {
+			if (films[i].filmStr() != placeholderStr) {
+				count++;
+			}
+		}
+
+		String^ temp1 = "Current amount of films: " + count;
+
+		listBox1->Items->Add(temp1);
+	}
 }
 private: System::Void checkedListBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (checkedListBox1->SelectedIndex == 0 || checkedListBox1->SelectedIndex == 3) {
+		listBox2->Visible = true;
+	}
+	else {
+		listBox2->Visible = false;
+	}
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	listBox1->Items->Clear();
+	for (int i = 0; i < FILM_LIMIT; i++) {
+		if (films[i].filmStr() != placeholderStr) {
+			listBox1->Items->Add(gcnew System::String(films[i].filmStr().c_str()));
+		}
+	}
 }
 };
 }

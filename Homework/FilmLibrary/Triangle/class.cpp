@@ -41,6 +41,22 @@ void filmLibrary::setProfit(int _profit)
 	profit = _profit;
 }
 
+filmLibrary& filmLibrary::operator=(const filmLibrary& fl)
+{
+	this->name = fl.name;
+	this->profit = fl.profit;
+
+	this->creators.composer = fl.creators.composer;
+	this->creators.producer = fl.creators.producer;
+	this->creators.screenwriter = fl.creators.screenwriter;
+
+	this->releaseDate.day = fl.releaseDate.day;
+	this->releaseDate.month = fl.releaseDate.month;
+	this->releaseDate.year = fl.releaseDate.year;
+
+	return *this;
+}
+
 int filmLibrary::getDay()
 {
 	return releaseDate.day;
@@ -81,11 +97,6 @@ int filmLibrary::getProfit()
 	return profit;
 }
 
-double filmLibrary::helpMe()
-{
-	return 0.0;
-}
-
 filmLibrary::filmLibrary()
 {
 	name = "Placeholder";
@@ -93,6 +104,9 @@ filmLibrary::filmLibrary()
 	releaseDate.day = 1;
 	releaseDate.month = 1;
 	releaseDate.year = 1900;
+	creators.producer = "Placeholder";
+	creators.composer = "Placeholder";
+	creators.screenwriter = "Placeholder";
 }
 
 filmLibrary::filmLibrary(std::string _name, filmCreators _creators, filmReleaseDate _releaseDate, int _profit)
@@ -114,6 +128,18 @@ std::string filmLibrary::filmStr()
 	std::string day, month, year, profitstr;
 	day = std::to_string(releaseDate.day); month = std::to_string(releaseDate.month); 
 	year = std::to_string(releaseDate.year); profitstr = std::to_string(profit);
-	std::string test = name + " " + creators.composer + " " + creators.producer + " " + creators.screenwriter + " " + day + " " + month + " " + year + " " + profitstr;
+	std::string test = name + " " + creators.producer + " " + creators.screenwriter + " " + creators.composer + " " + day + " " + month + " " + year + " " + profitstr;
 	return test;
+}
+
+void filmLibrary::filmSetData(std::string _name, std::string _producer, std::string _screenwriter, std::string _composer, int _day, int _month, int _year, int _profit)
+{
+	this->setDay(_day);
+	this->setMonth(_month);
+	this->setYear(_year);
+	this->setProfit(_profit);
+	this->setName(_name);
+	this->setProducer(_producer);
+	this->setScreenwriter(_screenwriter);
+	this->setComposer(_composer);
 }

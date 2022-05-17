@@ -108,7 +108,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\dimos\Downloads\ExampleOOP-main\FilmLibrary\Triangle</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\dimos\ExampleOOP\Homework\FilmLibrary\Triangle</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />

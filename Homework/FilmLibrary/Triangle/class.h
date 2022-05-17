@@ -2,7 +2,7 @@
 #include <string>
 
 class filmReleaseDate {
-private:
+protected:
 	int day;
 	int month;
 	int year;
@@ -11,7 +11,7 @@ public:
 };
 
 class filmCreators {
-private:
+protected:
 	std::string producer;
 	std::string screenwriter;
 	std::string composer;
@@ -20,7 +20,7 @@ public:
 };
 
 class filmLibrary {
-public:
+private:
 	std::string name;
 	filmCreators creators;
 	filmReleaseDate releaseDate;
@@ -39,8 +39,6 @@ public:
 	std::string getName();
 	int getProfit();
 
-	double helpMe();
-
 	void setDay(int _day);
 	void setMonth(int _month);
 	void setYear(int _year);
@@ -50,5 +48,9 @@ public:
 	void setName(std::string _name);
 	void setProfit(int _profit);
 
+	filmLibrary& operator=(const filmLibrary& fl);
+
+
 	std::string filmStr();
+	void filmSetData(std::string _name, std::string _producer, std::string _screenwriter, std::string _composer, int _day, int _month, int _year, int _profit);
 };
