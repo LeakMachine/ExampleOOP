@@ -92,7 +92,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\dimos\source\repos\RailTicketOffice\Class</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\dimos\ExampleOOP\Homework\RailTicketOffice\Class</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -107,6 +107,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\dimos\ExampleOOP\Homework\RailTicketOffice\Class</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />

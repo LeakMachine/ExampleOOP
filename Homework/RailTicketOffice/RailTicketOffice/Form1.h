@@ -9,6 +9,16 @@ namespace CppCLRWinformsProjekt {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Runtime::InteropServices;
+
+	RailTicketOffice rto;
+
+	void MarshalString(String^ s, std::string& outputstring)
+	{
+		const char* kPtoC = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+		outputstring = kPtoC;
+		Marshal::FreeHGlobal(IntPtr((void*)kPtoC));
+	}
 
 	/// <summary>
 	/// Zusammenfassung fьr Form1
@@ -35,12 +45,17 @@ namespace CppCLRWinformsProjekt {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::CheckedListBox^ checkedListBox1;
+
 	protected:
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::TextBox^ textBox3;
+
+
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::ListBox^ listBox1;
 	private: System::Windows::Forms::CheckedListBox^ checkedListBox2;
+	private: System::Windows::Forms::CheckedListBox^ checkedListBox1;
 
 	private:
 		/// <summary>
@@ -55,64 +70,93 @@ namespace CppCLRWinformsProjekt {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->checkedListBox1 = (gcnew System::Windows::Forms::CheckedListBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->checkedListBox2 = (gcnew System::Windows::Forms::CheckedListBox());
+			this->checkedListBox1 = (gcnew System::Windows::Forms::CheckedListBox());
 			this->SuspendLayout();
-			// 
-			// checkedListBox1
-			// 
-			this->checkedListBox1->FormattingEnabled = true;
-			this->checkedListBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Ласточка", L"Скорый", L"Фирменный" });
-			this->checkedListBox1->Location = System::Drawing::Point(586, 276);
-			this->checkedListBox1->Name = L"checkedListBox1";
-			this->checkedListBox1->Size = System::Drawing::Size(113, 79);
-			this->checkedListBox1->TabIndex = 0;
-			this->checkedListBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::checkedListBox1_SelectedIndexChanged);
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(586, 102);
+			this->textBox1->Location = System::Drawing::Point(781, 126);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(113, 20);
+			this->textBox1->Size = System::Drawing::Size(149, 22);
 			this->textBox1->TabIndex = 1;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(586, 128);
+			this->textBox2->Location = System::Drawing::Point(781, 158);
+			this->textBox2->Margin = System::Windows::Forms::Padding(4);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(113, 20);
+			this->textBox2->Size = System::Drawing::Size(149, 22);
 			this->textBox2->TabIndex = 2;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(586, 154);
+			this->textBox3->Location = System::Drawing::Point(781, 190);
+			this->textBox3->Margin = System::Windows::Forms::Padding(4);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(113, 20);
+			this->textBox3->Size = System::Drawing::Size(149, 22);
 			this->textBox3->TabIndex = 3;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(569, 113);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(148, 23);
+			this->button1->TabIndex = 6;
+			this->button1->Text = L"жми";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
+			// listBox1
+			// 
+			this->listBox1->FormattingEnabled = true;
+			this->listBox1->ItemHeight = 16;
+			this->listBox1->Location = System::Drawing::Point(284, 126);
+			this->listBox1->Name = L"listBox1";
+			this->listBox1->Size = System::Drawing::Size(191, 212);
+			this->listBox1->TabIndex = 7;
 			// 
 			// checkedListBox2
 			// 
 			this->checkedListBox2->FormattingEnabled = true;
 			this->checkedListBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Сидячий", L"Плацкарт", L"Купе" });
-			this->checkedListBox2->Location = System::Drawing::Point(586, 361);
+			this->checkedListBox2->Location = System::Drawing::Point(781, 340);
+			this->checkedListBox2->Margin = System::Windows::Forms::Padding(4);
 			this->checkedListBox2->Name = L"checkedListBox2";
-			this->checkedListBox2->Size = System::Drawing::Size(113, 79);
+			this->checkedListBox2->Size = System::Drawing::Size(149, 89);
 			this->checkedListBox2->TabIndex = 4;
 			this->checkedListBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::checkedListBox2_SelectedIndexChanged);
 			// 
+			// checkedListBox1
+			// 
+			this->checkedListBox1->FormattingEnabled = true;
+			this->checkedListBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Ласточка", L"Скорый", L"Фирменный" });
+			this->checkedListBox1->Location = System::Drawing::Point(781, 234);
+			this->checkedListBox1->Margin = System::Windows::Forms::Padding(4);
+			this->checkedListBox1->Name = L"checkedListBox1";
+			this->checkedListBox1->Size = System::Drawing::Size(149, 89);
+			this->checkedListBox1->TabIndex = 0;
+			this->checkedListBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::checkedListBox1_SelectedIndexChanged);
+			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(939, 562);
+			this->ClientSize = System::Drawing::Size(1252, 692);
+			this->Controls->Add(this->listBox1);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->checkedListBox2);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->checkedListBox1);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
@@ -127,5 +171,10 @@ namespace CppCLRWinformsProjekt {
 	}
 	private: System::Void checkedListBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	std::string test;
+	test = rto.orderFormCheque(0);
+	listBox1->Items->Add(gcnew System::String(test.c_str()));
+}
 };
 }
