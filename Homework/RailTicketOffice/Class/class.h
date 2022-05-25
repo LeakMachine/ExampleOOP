@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
+#include <string>
 
 struct FullName {
 	std::string name, surname, patronymic;
@@ -82,12 +83,16 @@ protected:
 	GorkyRailway gr;
 	Ticket tickets[100];
 public:
-	void orderAccept(Date _date, int _trainID, int _wagonType, FullName _name, int _counter, std::string _stationDeparture, std::string _stationArrival);
+	void orderAccept(Date _date, int _trainID,int _wagonID, int _wagonType, FullName _name, int _counter, std::string _stationDeparture, std::string _stationArrival);
 	bool orderCheckAvailability(int _counter, int _wagonType);
+	bool orderCheckSeatAvailability(int _counter);
 	void orderReserveSeats(int _counter,int _wagonID, int _seatID);
 	int orderCountPrice(int _counter);
-	int orderCancel(int _counter);
-	std::string orderFormCheque(int _counter);
+	void orderCancel(int _counter);
+	std::string orderFormCheque(int _counter, int _counter2);
+
+	int getTrainID(int _traintype, int _counter);
+	std::string getStation(int _traintype, int _counter, int _stationtype);
 
 	void print();
 	void print2(int _counter);
