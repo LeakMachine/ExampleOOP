@@ -44,29 +44,41 @@ struct CoupeWagon {
 	Seat upperSeats[18], lowerSeats[18];
 };
 
-struct Lastochka {
+class Train {
+public:
 	int id;
+
+	std::string route[10];
+};
+
+class Lastochka : public Train {
+public:
 	LasWagon wagons[8];
-	std::string stationDeparture, stationArrival;
+public:
+	void test_func();
+
 };
 
-struct Branded {
-	int id;
-	ResWagon rWagons[4];
-	CoupeWagon cWagons[6];
-	SVWagon svWagons[2];
-	std::string stationDeparture, stationArrival;
+class Branded : public Train {
+public:
+	ResWagon rWagonsBr[4];
+	CoupeWagon cWagonsBr[6];
+	SVWagon svWagonsBr[2];
+
+public:
+
 };
 
-struct Swift {
-	int id;
-	ResWagon rWagons[8];
-	CoupeWagon cWagons[4];
-	std::string stationDeparture, stationArrival;
+class Swift : public Train {
+public:
+	ResWagon rWagonsSw[8];
+	CoupeWagon cWagonsSw[4];
+public:
+
 };
 
 
-class GorkyRailway {
+class GorkyRailway : public Swift, public Branded, public Lastochka {
 protected:
 	Lastochka lTrain[3];
 	Branded bTrain;
@@ -85,7 +97,7 @@ protected:
 public:
 	void orderAccept(Date _date, int _trainID,int _wagonID, int _wagonType, FullName _name, int _counter, std::string _stationDeparture, std::string _stationArrival);
 	bool orderCheckAvailability(int _counter, int _wagonType);
-	bool orderCheckSeatAvailability(int _counter);
+	//bool orderCheckSeatAvailability(int _counter);
 	void orderReserveSeats(int _counter,int _wagonID, int _seatID);
 	int orderCountPrice(int _counter);
 	void orderCancel(int _counter);

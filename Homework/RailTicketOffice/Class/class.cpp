@@ -5,8 +5,8 @@ GorkyRailway::GorkyRailway()
 {
 	for (int i = 0; i < 3; i++) {
 		lTrain[i].id = rand() % 100 + 1;
-		lTrain[i].stationDeparture = "Station 1";
-		lTrain[i].stationArrival = "Station 2";
+		lTrain[i].route[0] = "Station 1";
+		lTrain[i].route[1] = "Station 2";
 		for (int j = 0; j < 8; j++) {
 			lTrain[i].wagons[j].id = j + 1;
 			for (int k = 0; k < 100; k++) {
@@ -18,76 +18,76 @@ GorkyRailway::GorkyRailway()
 	int wagonCount = 0;
 	int seatCount = 0;
 	bTrain.id = rand() % 100 + 1;
-	bTrain.stationDeparture = "Station 1";
-	bTrain.stationArrival = "Station 3";
+	bTrain.route[0] = "Station 1";
+	bTrain.route[1] = "Station 3";
 	for (int j = 0; j < 4; j++) {
-		bTrain.rWagons[j].id = j + 1;
+		bTrain.rWagonsBr[j].id = j + 1;
 		wagonCount++;
 		for (int k = 0; k < 27; k++) {
-			bTrain.rWagons[j].upperSeats[k].id = k + 1;
+			bTrain.rWagonsBr[j].upperSeats[k].id = k + 1;
 			seatCount++;
-			bTrain.rWagons[j].upperSeats[k].available = false;
+			bTrain.rWagonsBr[j].upperSeats[k].available = false;
 		}
 		for (int k = 0; k < 27; k++) {
-			bTrain.rWagons[j].lowerSeats[k].id = seatCount + 1;
+			bTrain.rWagonsBr[j].lowerSeats[k].id = seatCount + 1;
 			seatCount++;
-			bTrain.rWagons[j].lowerSeats[k].available = false;
+			bTrain.rWagonsBr[j].lowerSeats[k].available = false;
 		}
 	}
 	seatCount = 0;
 	for (int j = 0; j < 6; j++) {
-		bTrain.cWagons[j].id = wagonCount + 1;
+		bTrain.cWagonsBr[j].id = wagonCount + 1;
 		wagonCount++;
 		for (int k = 0; k < 18; k++) {
-			bTrain.cWagons[j].upperSeats[k].id = k + 1;
-			bTrain.cWagons[j].upperSeats[k].available = true;
+			bTrain.cWagonsBr[j].upperSeats[k].id = k + 1;
+			bTrain.cWagonsBr[j].upperSeats[k].available = true;
 		}
 		for (int k = 0; k < 18; k++) {
-			bTrain.cWagons[j].lowerSeats[k].id = seatCount + 1;
+			bTrain.cWagonsBr[j].lowerSeats[k].id = seatCount + 1;
 			seatCount++;
-			bTrain.cWagons[j].lowerSeats[k].available = true;
+			bTrain.cWagonsBr[j].lowerSeats[k].available = true;
 		}
 	}
 	seatCount = 0;
 	for (int j = 0; j < 2; j++) {
-		bTrain.svWagons[j].id = wagonCount + 1;
+		bTrain.svWagonsBr[j].id = wagonCount + 1;
 		wagonCount++;
 		for (int k = 0; k < 18; k++) {
-			bTrain.svWagons[j].regularSeats[k].id = k + 1;
-			bTrain.svWagons[j].regularSeats[k].available = true;
+			bTrain.svWagonsBr[j].regularSeats[k].id = k + 1;
+			bTrain.svWagonsBr[j].regularSeats[k].available = true;
 		}
 	}
 	wagonCount = 0;
 
 	sTrain.id = rand() % 100 + 1;
-	sTrain.stationDeparture = "Station 1";
-	sTrain.stationArrival = "Station 4";
+	sTrain.route[0] = "Station 1";
+	sTrain.route[1] = "Station 4";
 	for (int j = 0; j < 8; j++) {
-		sTrain.rWagons[j].id = j + 1;
+		sTrain.rWagonsSw[j].id = j + 1;
 		wagonCount++;
 		for (int k = 0; k < 27; k++) {
-			sTrain.rWagons[j].upperSeats[k].id = k + 1;
+			sTrain.rWagonsSw[j].upperSeats[k].id = k + 1;
 			seatCount++;
-			sTrain.rWagons[j].upperSeats[k].available = true;
+			sTrain.rWagonsSw[j].upperSeats[k].available = true;
 		}
 		for (int k = 0; k < 27; k++) {
-			sTrain.rWagons[j].lowerSeats[k].id = seatCount + 1;
+			sTrain.rWagonsSw[j].lowerSeats[k].id = seatCount + 1;
 			seatCount++;
-			sTrain.rWagons[j].lowerSeats[k].available = true;
+			sTrain.rWagonsSw[j].lowerSeats[k].available = true;
 		}
 	}
 	seatCount = 0;
 	for (int j = 0; j < 4; j++) {
-		sTrain.cWagons[j].id = wagonCount + 1;
+		sTrain.cWagonsSw[j].id = wagonCount + 1;
 		wagonCount++;
 		for (int k = 0; k < 18; k++) {
-			sTrain.cWagons[j].upperSeats[k].id = k + 1;
-			sTrain.cWagons[j].upperSeats[k].available = true;
+			sTrain.cWagonsSw[j].upperSeats[k].id = k + 1;
+			sTrain.cWagonsSw[j].upperSeats[k].available = true;
 		}
 		for (int k = 0; k < 18; k++) {
-			sTrain.cWagons[j].lowerSeats[k].id = seatCount + 1;
+			sTrain.cWagonsSw[j].lowerSeats[k].id = seatCount + 1;
 			seatCount++;
-			sTrain.cWagons[j].lowerSeats[k].available = true;
+			sTrain.cWagonsSw[j].lowerSeats[k].available = true;
 		}
 	}
 	seatCount = 0;
@@ -140,12 +140,12 @@ bool RailTicketOffice::orderCheckAvailability(int _counter, int _wagonType)
 		for (int j = 0; j < 4; j++) {
 			wagonCount++;
 			for (int k = 0; k < 27; k++) {
-				if (gr.bTrain.rWagons[j].upperSeats[k].available == true)
+				if (gr.bTrain.rWagonsBr[j].upperSeats[k].available == true)
 					return true;
 				seatCount++;
 			}
 			for (int k = 0; k < 27; k++) {
-				if (gr.bTrain.rWagons[j].lowerSeats[k].available == true)
+				if (gr.bTrain.rWagonsBr[j].lowerSeats[k].available == true)
 					return true;
 				seatCount++;
 			}
@@ -154,11 +154,11 @@ bool RailTicketOffice::orderCheckAvailability(int _counter, int _wagonType)
 		for (int j = 0; j < 6; j++) {
 			wagonCount++;
 			for (int k = 0; k < 18; k++) {
-				if (gr.bTrain.cWagons[j].upperSeats[k].available == true)
+				if (gr.bTrain.cWagonsBr[j].upperSeats[k].available == true)
 					return true;
 			}
 			for (int k = 0; k < 18; k++) {
-				if (gr.bTrain.cWagons[j].lowerSeats[k].available == true)
+				if (gr.bTrain.cWagonsBr[j].lowerSeats[k].available == true)
 					return true;
 				seatCount++;
 			}
@@ -167,7 +167,7 @@ bool RailTicketOffice::orderCheckAvailability(int _counter, int _wagonType)
 		for (int j = 0; j < 2; j++) {
 			wagonCount++;
 			for (int k = 0; k < 18; k++) {
-				if (gr.bTrain.svWagons[j].regularSeats[k].available == true)
+				if (gr.bTrain.svWagonsBr[j].regularSeats[k].available == true)
 					return true;
 			}
 		}
@@ -178,12 +178,12 @@ bool RailTicketOffice::orderCheckAvailability(int _counter, int _wagonType)
 		for (int j = 0; j < 8; j++) {
 			wagonCount++;
 			for (int k = 0; k < 27; k++) {
-				if (gr.bTrain.rWagons[j].upperSeats[k].available == true)
+				if (gr.bTrain.rWagonsSw[j].upperSeats[k].available == true)
 					return true;
 				seatCount++;
 			}
 			for (int k = 0; k < 27; k++) {
-				if (gr.bTrain.rWagons[j].lowerSeats[k].available == true)
+				if (gr.bTrain.rWagonsSw[j].lowerSeats[k].available == true)
 					return true;
 				seatCount++;
 			}
@@ -192,11 +192,11 @@ bool RailTicketOffice::orderCheckAvailability(int _counter, int _wagonType)
 		for (int j = 0; j < 4; j++) {
 			wagonCount++;
 			for (int k = 0; k < 18; k++) {
-				if (gr.bTrain.cWagons[j].upperSeats[k].available == true)
+				if (gr.bTrain.cWagonsSw[j].upperSeats[k].available == true)
 					return true;
 			}
 			for (int k = 0; k < 18; k++) {
-				if (gr.bTrain.cWagons[j].lowerSeats[k].available == true)
+				if (gr.bTrain.cWagonsSw[j].lowerSeats[k].available == true)
 					return true;
 				seatCount++;
 			}
@@ -207,8 +207,7 @@ bool RailTicketOffice::orderCheckAvailability(int _counter, int _wagonType)
 
 	return false;
 }
-
-bool RailTicketOffice::orderCheckSeatAvailability(int _counter)
+/*bool RailTicketOffice::orderCheckSeatAvailability(int _counter)
 {
 	if (tickets[_counter].trainID == gr.lTrain[0].id) {
 		if (gr.lTrain[0].wagons[tickets[_counter].wagonID - 1].regularSeats[tickets[_counter].seatID - 1].available == false)
@@ -272,7 +271,8 @@ bool RailTicketOffice::orderCheckSeatAvailability(int _counter)
 	}
 
 	return true;
-}
+}*/
+
 
 void RailTicketOffice::orderReserveSeats(int _counter, int _wagonID, int _seatID)
 {
@@ -286,27 +286,27 @@ void RailTicketOffice::orderReserveSeats(int _counter, int _wagonID, int _seatID
 
 	if (tickets[_counter].trainID == gr.bTrain.id) {
 		if(tickets[_counter].wagonType == 1 && _seatID <= 27)
-			gr.bTrain.rWagons[_wagonID].upperSeats[_seatID].available = false;
+			gr.bTrain.rWagonsBr[_wagonID].upperSeats[_seatID].available = false;
 		else if(tickets[_counter].wagonType == 1 && _seatID > 27)
-			gr.bTrain.rWagons[_wagonID].lowerSeats[_seatID].available = false;
+			gr.bTrain.rWagonsBr[_wagonID].lowerSeats[_seatID].available = false;
 		else if (tickets[_counter].wagonType == 2 && _seatID <= 18)
-			gr.bTrain.cWagons[_wagonID].upperSeats[_seatID].available = false;
+			gr.bTrain.cWagonsBr[_wagonID].upperSeats[_seatID].available = false;
 		else if (tickets[_counter].wagonType == 2 && _seatID > 18)
-			gr.bTrain.cWagons[_wagonID].lowerSeats[_seatID].available = false;
+			gr.bTrain.cWagonsBr[_wagonID].lowerSeats[_seatID].available = false;
 		else if (tickets[_counter].wagonType == 3 && _seatID <= 18)
-			gr.bTrain.svWagons[_wagonID].regularSeats[_seatID].available = false;
+			gr.bTrain.svWagonsBr[_wagonID].regularSeats[_seatID].available = false;
 
 	}
 
 	if (tickets[_counter].trainID == gr.sTrain.id) {
 		if (tickets[_counter].wagonType == 1 && _seatID <= 27)
-			gr.bTrain.rWagons[_wagonID].upperSeats[_seatID].available = false;
+			gr.bTrain.rWagonsSw[_wagonID].upperSeats[_seatID].available = false;
 		else if (tickets[_counter].wagonType == 1 && _seatID > 27)
-			gr.bTrain.rWagons[_wagonID].lowerSeats[_seatID].available = false;
+			gr.bTrain.rWagonsSw[_wagonID].lowerSeats[_seatID].available = false;
 		else if (tickets[_counter].wagonType == 2 && _seatID <= 18)
-			gr.bTrain.cWagons[_wagonID].upperSeats[_seatID].available = false;
+			gr.bTrain.cWagonsSw[_wagonID].upperSeats[_seatID].available = false;
 		else if (tickets[_counter].wagonType == 2 && _seatID > 18)
-			gr.bTrain.cWagons[_wagonID].lowerSeats[_seatID].available = false;
+			gr.bTrain.cWagonsSw[_wagonID].lowerSeats[_seatID].available = false;
 	}
 
 }
@@ -371,10 +371,25 @@ void RailTicketOffice::orderCancel(int _counter)
 std::string RailTicketOffice::orderFormCheque(int _counter, int _counter2)
 {
 	std::string tempString[4];
+	std::string tempString2;
+
+	if (tickets[_counter].wagonType == 0) {
+		tempString2 = "Ласточка";
+	}
+	else if (tickets[_counter].wagonType == 1) {
+		tempString2 = "Купе";
+	}
+	else if (tickets[_counter].wagonType == 2) {
+		tempString2 = "Плацкарт";
+	}
+	else if (tickets[_counter].wagonType == 3) {
+		tempString2 = "Сидячий";
+	}
+
 
 	tempString[0] = std::to_string(tickets[_counter].date.day) + "-" + std::to_string(tickets[_counter].date.month) + "-" + std::to_string(tickets[_counter].date.year);
 	tempString[1] = tickets[_counter].name.surname + '-' + tickets[_counter].name.name + '-' + tickets[_counter].name.patronymic;
-	tempString[2] = std::to_string(tickets[_counter].trainID) + '-' + std::to_string(tickets[_counter].wagonID) + '-' + std::to_string(tickets[_counter].seatID) + '-' + std::to_string(tickets[_counter].wagonType);
+	tempString[2] = std::to_string(tickets[_counter].trainID) + '-' + std::to_string(tickets[_counter].wagonID) + '-' + std::to_string(tickets[_counter].seatID) + '-' + tempString2;
 	tempString[3] = tickets[_counter].stationDeparture + '-' + tickets[_counter].stationArrival;
 
 	return tempString[_counter2];
@@ -397,22 +412,22 @@ int RailTicketOffice::getTrainID(int _traintype, int _counter)
 std::string RailTicketOffice::getStation(int _traintype, int _counter, int _stationtype)
 {
 	if (_traintype == 0 && _stationtype == 0) {
-		return gr.lTrain[_counter].stationArrival;
+		return gr.lTrain[_counter].route[1];
 	}
 	else if (_traintype == 1 && _stationtype == 0) {
-		return gr.bTrain.stationArrival;
+		return gr.bTrain.route[1];
 	}
 	else if (_traintype == 2 && _stationtype == 0) {
-		return gr.sTrain.stationArrival;
+		return gr.sTrain.route[1];
 	}
 	if (_traintype == 0 && _stationtype == 1) {
-		return gr.lTrain[_counter].stationDeparture;
+		return gr.lTrain[_counter].route[0];
 	}
 	else if (_traintype == 1 && _stationtype == 1) {
-		return gr.bTrain.stationDeparture;
+		return gr.bTrain.route[0];
 	}
 	else if (_traintype == 2 && _stationtype == 1) {
-		return gr.sTrain.stationDeparture;
+		return gr.sTrain.route[0];
 	}
 	return std::string();
 }
@@ -423,4 +438,9 @@ void RailTicketOffice::print2(int _counter)
 	std::cout << tickets[_counter].name.surname << "-" << tickets[_counter].name.name << "-" << tickets[_counter].name.patronymic << std::endl;
 	std::cout << tickets[_counter].trainID << "-" << tickets[_counter].wagonID << "-" << tickets[_counter].seatID << "-" << tickets[_counter].wagonType << std::endl;
 	std::cout << tickets[_counter].stationDeparture << "-" << tickets[_counter].stationArrival << std::endl;
+}
+
+void Lastochka::test_func()
+{
+	
 }

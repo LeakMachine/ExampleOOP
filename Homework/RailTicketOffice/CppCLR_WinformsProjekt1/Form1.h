@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\dimos\OneDrive\Рабочий стол\RailTicketOffice\Class\class.h"
+#include "C:\Users\itmm-2112-a\Desktop\RailTicketOffice\Class\class.h"
 #define LAS_SEAT_Q 100
 #define PLATS_SEAT_Q 27
 #define COUP_SEAT_Q 18	
@@ -140,17 +140,18 @@ namespace CppCLRWinformsProjekt {
 			// listBox1
 			// 
 			this->listBox1->FormattingEnabled = true;
-			this->listBox1->ItemHeight = 16;
-			this->listBox1->Location = System::Drawing::Point(12, 12);
+			this->listBox1->Location = System::Drawing::Point(9, 10);
+			this->listBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(684, 260);
+			this->listBox1->Size = System::Drawing::Size(514, 212);
 			this->listBox1->TabIndex = 0;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(12, 402);
+			this->button1->Location = System::Drawing::Point(9, 327);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(309, 23);
+			this->button1->Size = System::Drawing::Size(232, 19);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Сформировать билет";
 			this->button1->UseVisualStyleBackColor = true;
@@ -159,154 +160,170 @@ namespace CppCLRWinformsProjekt {
 			// listBox2
 			// 
 			this->listBox2->FormattingEnabled = true;
-			this->listBox2->ItemHeight = 16;
 			this->listBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Ласточка", L"Фирменный", L"Скорый" });
-			this->listBox2->Location = System::Drawing::Point(702, 12);
+			this->listBox2->Location = System::Drawing::Point(526, 10);
+			this->listBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->listBox2->Name = L"listBox2";
-			this->listBox2->Size = System::Drawing::Size(146, 116);
+			this->listBox2->Size = System::Drawing::Size(110, 95);
 			this->listBox2->TabIndex = 5;
 			this->listBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::listBox2_SelectedIndexChanged);
 			// 
 			// listBox3
 			// 
 			this->listBox3->FormattingEnabled = true;
-			this->listBox3->ItemHeight = 16;
-			this->listBox3->Location = System::Drawing::Point(702, 141);
+			this->listBox3->Location = System::Drawing::Point(526, 115);
+			this->listBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->listBox3->Name = L"listBox3";
-			this->listBox3->Size = System::Drawing::Size(146, 116);
+			this->listBox3->Size = System::Drawing::Size(110, 95);
 			this->listBox3->TabIndex = 6;
 			this->listBox3->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::listBox3_SelectedIndexChanged);
 			// 
 			// listBox4
 			// 
 			this->listBox4->FormattingEnabled = true;
-			this->listBox4->ItemHeight = 16;
-			this->listBox4->Location = System::Drawing::Point(702, 270);
+			this->listBox4->Location = System::Drawing::Point(526, 219);
+			this->listBox4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->listBox4->Name = L"listBox4";
-			this->listBox4->Size = System::Drawing::Size(146, 116);
+			this->listBox4->Size = System::Drawing::Size(110, 95);
 			this->listBox4->TabIndex = 7;
 			this->listBox4->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::listBox4_SelectedIndexChanged);
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(974, 161);
+			this->textBox1->Location = System::Drawing::Point(730, 131);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 22);
+			this->textBox1->Size = System::Drawing::Size(76, 20);
 			this->textBox1->TabIndex = 8;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(975, 141);
+			this->label1->Location = System::Drawing::Point(731, 115);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(99, 17);
+			this->label1->Size = System::Drawing::Size(79, 13);
 			this->label1->TabIndex = 9;
 			this->label1->Text = L"Номер вагона";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(854, 12);
+			this->label2->Location = System::Drawing::Point(640, 10);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(84, 17);
+			this->label2->Size = System::Drawing::Size(65, 13);
 			this->label2->TabIndex = 10;
 			this->label2->Text = L"Тип поезда";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(854, 141);
+			this->label3->Location = System::Drawing::Point(640, 115);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(81, 17);
+			this->label3->Size = System::Drawing::Size(64, 13);
 			this->label3->TabIndex = 11;
 			this->label3->Text = L"Тип вагона";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(857, 270);
+			this->label4->Location = System::Drawing::Point(643, 219);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(94, 17);
+			this->label4->Size = System::Drawing::Size(75, 13);
 			this->label4->TabIndex = 12;
 			this->label4->Text = L"Номер места";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(975, 13);
+			this->label5->Location = System::Drawing::Point(731, 11);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(72, 17);
+			this->label5->Size = System::Drawing::Size(57, 13);
 			this->label5->TabIndex = 14;
 			this->label5->Text = L"ID поезда";
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(974, 33);
+			this->textBox2->Location = System::Drawing::Point(730, 27);
+			this->textBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 22);
+			this->textBox2->Size = System::Drawing::Size(76, 20);
 			this->textBox2->TabIndex = 13;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(12, 293);
+			this->textBox3->Location = System::Drawing::Point(9, 238);
+			this->textBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(107, 22);
+			this->textBox3->Size = System::Drawing::Size(81, 20);
 			this->textBox3->TabIndex = 15;
 			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(12, 321);
+			this->textBox4->Location = System::Drawing::Point(9, 261);
+			this->textBox4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(107, 22);
+			this->textBox4->Size = System::Drawing::Size(81, 20);
 			this->textBox4->TabIndex = 16;
 			// 
 			// textBox5
 			// 
-			this->textBox5->Location = System::Drawing::Point(12, 349);
+			this->textBox5->Location = System::Drawing::Point(9, 284);
+			this->textBox5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(107, 22);
+			this->textBox5->Size = System::Drawing::Size(81, 20);
 			this->textBox5->TabIndex = 17;
 			// 
 			// textBox6
 			// 
-			this->textBox6->Location = System::Drawing::Point(214, 293);
+			this->textBox6->Location = System::Drawing::Point(160, 238);
+			this->textBox6->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(107, 22);
+			this->textBox6->Size = System::Drawing::Size(81, 20);
 			this->textBox6->TabIndex = 18;
 			// 
 			// textBox7
 			// 
-			this->textBox7->Location = System::Drawing::Point(214, 321);
+			this->textBox7->Location = System::Drawing::Point(160, 261);
+			this->textBox7->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(107, 22);
+			this->textBox7->Size = System::Drawing::Size(81, 20);
 			this->textBox7->TabIndex = 19;
 			// 
 			// textBox8
 			// 
-			this->textBox8->Location = System::Drawing::Point(214, 349);
+			this->textBox8->Location = System::Drawing::Point(160, 284);
+			this->textBox8->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(107, 22);
+			this->textBox8->Size = System::Drawing::Size(81, 20);
 			this->textBox8->TabIndex = 20;
 			// 
 			// textBox9
 			// 
-			this->textBox9->Location = System::Drawing::Point(430, 293);
+			this->textBox9->Location = System::Drawing::Point(322, 238);
+			this->textBox9->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(107, 22);
+			this->textBox9->Size = System::Drawing::Size(81, 20);
 			this->textBox9->TabIndex = 22;
 			// 
 			// textBox10
 			// 
-			this->textBox10->Location = System::Drawing::Point(430, 321);
+			this->textBox10->Location = System::Drawing::Point(322, 261);
+			this->textBox10->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(107, 22);
+			this->textBox10->Size = System::Drawing::Size(81, 20);
 			this->textBox10->TabIndex = 21;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(373, 402);
+			this->button2->Location = System::Drawing::Point(280, 327);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(269, 23);
+			this->button2->Size = System::Drawing::Size(202, 19);
 			this->button2->TabIndex = 23;
 			this->button2->Text = L"Отмена билета";
 			this->button2->UseVisualStyleBackColor = true;
@@ -315,80 +332,89 @@ namespace CppCLRWinformsProjekt {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(126, 297);
+			this->label6->Location = System::Drawing::Point(94, 241);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(35, 17);
+			this->label6->Size = System::Drawing::Size(29, 13);
 			this->label6->TabIndex = 24;
 			this->label6->Text = L"Имя";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(126, 326);
+			this->label7->Location = System::Drawing::Point(94, 265);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(70, 17);
+			this->label7->Size = System::Drawing::Size(56, 13);
 			this->label7->TabIndex = 25;
 			this->label7->Text = L"Фамилия";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(126, 354);
+			this->label8->Location = System::Drawing::Point(94, 288);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(71, 17);
+			this->label8->Size = System::Drawing::Size(54, 13);
 			this->label8->TabIndex = 26;
 			this->label8->Text = L"Отчество";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(340, 296);
+			this->label9->Location = System::Drawing::Point(255, 240);
+			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(42, 17);
+			this->label9->Size = System::Drawing::Size(34, 13);
 			this->label9->TabIndex = 27;
 			this->label9->Text = L"День";
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(340, 324);
+			this->label10->Location = System::Drawing::Point(255, 263);
+			this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(50, 17);
+			this->label10->Size = System::Drawing::Size(40, 13);
 			this->label10->TabIndex = 28;
 			this->label10->Text = L"Месяц";
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(340, 354);
+			this->label11->Location = System::Drawing::Point(255, 288);
+			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(32, 17);
+			this->label11->Size = System::Drawing::Size(25, 13);
 			this->label11->TabIndex = 29;
 			this->label11->Text = L"Год";
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(543, 293);
+			this->label12->Location = System::Drawing::Point(407, 238);
+			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(154, 17);
+			this->label12->Size = System::Drawing::Size(117, 13);
 			this->label12->TabIndex = 30;
 			this->label12->Text = L"Станция отправления";
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(543, 321);
+			this->label13->Location = System::Drawing::Point(407, 261);
+			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(133, 17);
+			this->label13->Size = System::Drawing::Size(101, 13);
 			this->label13->TabIndex = 31;
 			this->label13->Text = L"Станция прибытия";
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(12, 431);
+			this->button3->Location = System::Drawing::Point(9, 350);
+			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(309, 23);
+			this->button3->Size = System::Drawing::Size(232, 19);
 			this->button3->TabIndex = 32;
 			this->button3->Text = L"Следующий билет";
 			this->button3->UseVisualStyleBackColor = true;
@@ -397,9 +423,9 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1115, 478);
+			this->ClientSize = System::Drawing::Size(849, 388);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->label13);
 			this->Controls->Add(this->label12);
@@ -430,6 +456,7 @@ namespace CppCLRWinformsProjekt {
 			this->Controls->Add(this->listBox2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->listBox1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
@@ -477,7 +504,7 @@ namespace CppCLRWinformsProjekt {
 		int wagonID = int::Parse(textBox1->Text);
 
 		rto.orderAccept(date, trainID, wagonID,wagonTypeSelected, name, 0, tempStrDeparting, tempStrArrival);
-		if (rto.orderCheckAvailability(0, wagonTypeSelected) == false || rto.orderCheckSeatAvailability(0) == false) {
+		if (rto.orderCheckAvailability(0, wagonTypeSelected) == false) {
 			listBox1->Items->Clear();
 			std::string errorText = "wrong input";
 			listBox1->Items->Add(gcnew System::String(errorText.c_str()));
@@ -624,6 +651,16 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	counter++;
 	listBox1->Items->Clear();
 	init();
+	textBox1->Text = "";
+	textBox2->Text = "";
+	textBox3->Text = "";
+	textBox4->Text = "";
+	textBox5->Text = "";
+	textBox6->Text = "";
+	textBox7->Text = "";
+	textBox8->Text = "";
+	textBox9->Text = "";
+	textBox10->Text = "";
 }
 };
 }
